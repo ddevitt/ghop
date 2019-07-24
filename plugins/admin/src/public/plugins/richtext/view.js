@@ -122,7 +122,7 @@ define(['pluginBaseView', 'underscore', 'jquery',
         }
 
         function stopSort() {
-            this.$('cloned').remove();
+            this.$('.cloned').remove();
         }
 
     });
