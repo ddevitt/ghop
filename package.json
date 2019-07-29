@@ -1,17 +1,21 @@
 {
-  "name": "grasshopper-cms",
-  "version": "0.27.5",
+  "name": "ghop",
+  "version": "0.27.8",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ddevitt/ghop.git"
   },
   "engines": {
     "node": ">=6"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "atob": "^2.0.3",
     "bluebird": "^3.5.1",
