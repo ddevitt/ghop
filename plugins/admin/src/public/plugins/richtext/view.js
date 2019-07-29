@@ -112,17 +112,27 @@ define(['pluginBaseView', 'underscore', 'jquery',
         }
 
         function sortStart() {
+            // This is the <textarea> that the editor is initialized on
             var textBox = this.$('#ckeditor' + this.model.cid),
-                ckeClone = this.$('#cke_ckeditor' + this.model.cid).clone().addClass('cloned');
+                // This is a clone of the actual editor that has been initialized
+                ckeClone = this.$('#cke_ckeditor' + this.model.cid).clone().addClass('cloned')
+                    .css({'display':'none'});
 
             _setContentValue.call(this);
-            textBox.after(ckeClone);
-            this.ckeditor.destroy();
+
+            if(textBox.parents('.ui-sortable').length){
+                textBox.after(ckeClone);
+                this.ckeditor.destroy();
+            }
+
             textBox.hide();
         }
 
         function stopSort() {
-            this.$('.cloned').remove();
+            var cloned = this.$('.cloned');
+            if(!cloned.parents('.ui-sortable').length){
+                cloned.remove();
+            }
         }
 
     });
