@@ -113,15 +113,13 @@ define(['pluginBaseView', 'underscore', 'jquery',
 
         function sortStart() {
             // This is the <textarea> that the editor is initialized on
-            var textBox = this.$('#ckeditor' + this.model.cid),
-                // This is a clone of the actual editor that has been initialized
-                ckeClone = this.$('#cke_ckeditor' + this.model.cid).clone().addClass('cloned')
-                    .css({'display':'none'});
+            var textBox = this.$('#ckeditor' + this.model.cid);
 
             _setContentValue.call(this);
 
             if(textBox.parents('.ui-sortable').length){
-                textBox.after(ckeClone);
+                if(!this.$('#cke_ckeditor' + this.model.cid).hasClass('cloned')){
+                }
                 this.ckeditor.destroy();
             }
 
@@ -129,6 +127,7 @@ define(['pluginBaseView', 'underscore', 'jquery',
         }
 
         function stopSort() {
+            _prepareCkeditor.call(this);
             var cloned = this.$('.cloned');
             if(!cloned.parents('.ui-sortable').length){
                 cloned.remove();
